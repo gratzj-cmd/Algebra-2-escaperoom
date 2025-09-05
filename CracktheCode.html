@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra 2: Secret Agent Challenge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .puzzle-card {
+            transition: all 0.3s ease-in-out;
+            filter: grayscale(80%);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .puzzle-card.active {
+            filter: grayscale(0%);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .input-field {
+            transition: all 0.2s ease;
+        }
+        .intel-box {
+            background-color: #1f2937; /* gray-800 */
+            color: #d1d5db; /* gray-300 */
+            border-left: 4px solid #4f46e5; /* indigo-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-200 text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
+        <!-- Header -->
+        <header class="text-center mb-8 bg-white p-6 rounded-xl shadow-md border-t-4 border-indigo-600">
+            <h1 class="text-3xl md:text-4xl font-bold text-indigo-700">TOP SECRET: Mission Dossier</h1>
+            <p class="mt-2 text-lg text-gray-600">Your mission, Agent, is to find the 5-digit launch code for the Orion Satellite. Solve each puzzle to gather critical intel. Good luck.</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- Puzzle 1: Graphing -->
+            <section id="puzzle-1" class="puzzle-card active bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-xl mr-4">1</div>
+                    <h2 class="text-2xl font-semibold">Intel Briefing: Drone Intercept</h2>
+                </div>
+                <p class="mb-4">Two spy drones are on linear flight paths. At what coordinate point do their paths intersect? Enter your answer as `(x,y)`.</p>
+                <div class="flex justify-center mb-4">
+                     <img src="https://placehold.co/400x300/e0e7ff/4f46e5?text=Drone+Paths%0Ay=2x-1%0Aand%0Ay=-x%2B5&font=inter" alt="Graph showing two intersecting lines. One line (y=2x-1) goes up and to the right, passing through (0,-1) and (1,1). The second line (y=-x+5) goes down and to the right, passing through (0,5) and (5,0). The lines intersect at the point (2,3)." class="rounded-lg border">
+                </div>
+                <div class="flex items-center gap-4">
+                    <input id="answer-1" type="text" placeholder="(x,y)" class="input-field w-full p-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:ring-indigo-500">
+                    <button class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700" onclick="checkAnswer(1)">Submit</button>
+                </div>
+                <div id="feedback-1" class="hidden mt-4 p-4 intel-box rounded-lg"></div>
+            </section>
+
+            <!-- Puzzle 2: Substitution -->
+            <section id="puzzle-2" class="puzzle-card bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-xl mr-4">2</div>
+                    <h2 class="text-2xl font-semibold">Intel Briefing: Coded Transmission</h2>
+                </div>
+                <p class="mb-4">The frequency `f` and gain `g` of a coded transmission are related by the system below. Decrypt the value of `f`.</p>
+                <div class="bg-gray-100 p-4 rounded-lg text-center text-lg mb-4 font-mono">
+                    <p>g = 2f - 8</p>
+                    <p>f + g = 1</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <input id="answer-2" type="text" placeholder="Value of f" class="input-field w-full p-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:ring-indigo-500">
+                    <button class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700" onclick="checkAnswer(2)">Submit</button>
+                </div>
+                 <div id="feedback-2" class="hidden mt-4 p-4 intel-box rounded-lg"></div>
+            </section>
+
+            <!-- Puzzle 3: Elimination -->
+            <section id="puzzle-3" class="puzzle-card bg-white p-6 rounded-xl shadow-md">
+                 <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-xl mr-4">3</div>
+                    <h2 class="text-2xl font-semibold">Intel Briefing: Supply Drop</h2>
+                </div>
+                <p class="mb-4">Two cargo planes make a supply drop. The total weight `w` and volume `v` are constrained by the system below. Find the weight `w`.</p>
+                <div class="bg-gray-100 p-4 rounded-lg text-center text-lg mb-4 font-mono">
+                    <p>3w + 4v = 19</p>
+                    <p>3w + 6v = 33</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <input id="answer-3" type="text" placeholder="Value of w" class="input-field w-full p-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:ring-indigo-500">
+                    <button class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700" onclick="checkAnswer(3)">Submit</button>
+                </div>
+                <div id="feedback-3" class="hidden mt-4 p-4 intel-box rounded-lg"></div>
+            </section>
+
+            <!-- Puzzle 4: Word Problem -->
+            <section id="puzzle-4" class="puzzle-card bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-xl mr-4">4</div>
+                    <h2 class="text-2xl font-semibold">Intel Briefing: The Arms Dealer</h2>
+                </div>
+                <p class="mb-4">An arms dealer sells laser pens (`p`) and grappling hooks (`h`). Agent Coulson buys 3 pens and 1 hook for $14 million. Agent Romanoff buys 8 pens and 2 hooks for $36 million. What is the cost of one grappling hook (`h`) in millions?</p>
+                <div class="flex items-center gap-4">
+                    <input id="answer-4" type="text" placeholder="Cost of hook (h)" class="input-field w-full p-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:ring-indigo-500">
+                    <button class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700" onclick="checkAnswer(4)">Submit</button>
+                </div>
+                <div id="feedback-4" class="hidden mt-4 p-4 intel-box rounded-lg"></div>
+            </section>
+
+            <!-- Puzzle 5: Inequalities -->
+            <section id="puzzle-5" class="puzzle-card bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-xl mr-4">5</div>
+                    <h2 class="text-2xl font-semibold">Intel Briefing: Rendezvous Point</h2>
+                </div>
+                <p class="mb-4">The graph shows the possible locations for a secret rendezvous. Any point `(x, y)` with integer coordinates <span class="font-bold">inside</span> the shaded region is a valid meeting spot. Find one such point and enter it as `(x,y)`.</p>
+                <div class="flex justify-center mb-4">
+                    <img src="https://placehold.co/400x300/e0e7ff/4f46e5?text=Rendezvous+Zone%0Ay+%3C%3D+x%2B2%0Aand%0Ay+%3E+-2x-1&font=inter" alt="Graph showing a shaded region. A solid line y=x+2 is shaded below. A dashed line y=-2x-1 is shaded above. The overlapping shaded region is the solution." class="rounded-lg border">
+                </div>
+                <div class="flex items-center gap-4">
+                    <input id="answer-5" type="text" placeholder="(x,y)" class="input-field w-full p-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:ring-indigo-500">
+                    <button class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700" onclick="checkAnswer(5)">Submit</button>
+                </div>
+                <div id="feedback-5" class="hidden mt-4 p-4 intel-box rounded-lg"></div>
+            </section>
+
+            <!-- Final Code Entry -->
+            <section id="final-challenge" class="puzzle-card bg-white p-6 rounded-xl shadow-md">
+                 <h2 class="text-2xl font-semibold text-center">Final Challenge: Launch Sequence</h2>
+                 <p class="text-center text-gray-600 mt-2 mb-4">You have collected all the intel. Use the Launch Sequence Instructions below to assemble the final 5-digit code from your intel variables.</p>
+                <div class="bg-gray-800 text-gray-200 p-4 rounded-lg font-mono text-sm mb-4">
+                    <p class="font-bold text-lg mb-2 text-indigo-400">-- LAUNCH SEQUENCE INSTRUCTIONS --</p>
+                    <p>Digit 1: The drone's vertical position (<span class="font-bold">B</span>)</p>
+                    <p>Digit 2: The transmitter frequency (<span class="font-bold">C</span>)</p>
+                    <p>Digit 3: The supply drop weight (<span class="font-bold">D</span>)</p>
+                    <p>Digit 4: The cost of a grappling hook (<span class="font-bold">E</span>)</p>
+                    <p>Digit 5: The sum of your rendezvous coordinates (<span class="font-bold">F</span>)</p>
+                </div>
+                 <div class="flex justify-center items-center gap-4">
+                     <input id="code-input" type="text" maxlength="5" class="text-3xl tracking-[.5em] text-center font-bold border-2 border-gray-300 rounded-lg w-48 h-16 focus:border-indigo-500 focus:ring-indigo-500">
+                     <button id="submit-code" class="bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg h-16 text-lg hover:bg-indigo-700 transition-colors">Launch</button>
+                 </div>
+                 <div id="final-feedback" class="text-center mt-4"></div>
+            </section>
+        </main>
+        
+        <!-- Success Modal -->
+        <div id="success-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 text-center max-w-md w-full transform transition-all scale-95">
+                <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
+                     <svg class="h-10 w-10 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-3xl font-bold text-gray-900">Mission Accomplished!</h3>
+                <p class="mt-4 text-lg text-gray-600">You've successfully launched the satellite! Show this screen to your commanding officer to claim your extra credit.</p>
+                <div id="final-code-display" class="mt-6 text-sm text-gray-500"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- State Management ---
+        const intel = {};
+        const solvedPuzzles = new Set();
+
+        // --- Helper Functions ---
+        function parseCoordinates(input) {
+            const cleaned = input.replace(/[\s()]/g, '');
+            const parts = cleaned.split(',');
+            if (parts.length !== 2) return null;
+            const x = parseFloat(parts[0]);
+            const y = parseFloat(parts[1]);
+            if (isNaN(x) || isNaN(y)) return null;
+            return { x, y };
+        }
+
+        // --- Main Logic ---
+        function checkAnswer(puzzleNumber) {
+            if (solvedPuzzles.has(puzzleNumber)) return;
+
+            const inputElement = document.getElementById(`answer-${puzzleNumber}`);
+            const feedbackElement = document.getElementById(`feedback-${puzzleNumber}`);
+            const inputValue = inputElement.value.trim();
+            let isCorrect = false;
+
+            // --- Puzzle-Specific Validation ---
+            if (puzzleNumber === 1) {
+                const coords = parseCoordinates(inputValue);
+                if (coords && coords.x === 2 && coords.y === 3) {
+                    intel.A = coords.x;
+                    intel.B = coords.y;
+                    feedbackElement.innerHTML = `<p class="font-bold">INTERCEPT POINT CONFIRMED: (${intel.A}, ${intel.B})</p><p>Intel gathered: Variable <span class="font-bold text-indigo-400">A = ${intel.A}</span>, Variable <span class="font-bold text-indigo-400">B = ${intel.B}</span>.</p>`;
+                    isCorrect = true;
+                }
+            } else if (puzzleNumber === 2) {
+                if (parseFloat(inputValue) === 3) {
+                    intel.C = 3;
+                    feedbackElement.innerHTML = `<p class="font-bold">TRANSMISSION DECRYPTED.</p><p>Intel gathered: Variable <span class="font-bold text-indigo-400">C = ${intel.C}</span>.</p>`;
+                    isCorrect = true;
+                }
+            } else if (puzzleNumber === 3) {
+                 if (parseFloat(inputValue) === -3) {
+                    intel.D = -3;
+                    feedbackElement.innerHTML = `<p class="font-bold">CARGO MANIFEST SECURED.</p><p>Intel gathered: Variable <span class="font-bold text-indigo-400">D = ${intel.D}</span>.</p>`;
+                    isCorrect = true;
+                }
+            } else if (puzzleNumber === 4) {
+                if (parseFloat(inputValue) === 8) {
+                    intel.E = 8;
+                    feedbackElement.innerHTML = `<p class="font-bold">DEALER LEDGER ACQUIRED.</p><p>Intel gathered: Variable <span class="font-bold text-indigo-400">E = ${intel.E}</span>.</p>`;
+                    isCorrect = true;
+                }
+            } else if (puzzleNumber === 5) {
+                const coords = parseCoordinates(inputValue);
+                if (coords && Number.isInteger(coords.x) && Number.isInteger(coords.y) && coords.y <= coords.x + 2 && coords.y > -2 * coords.x - 1) {
+                    intel.F = coords.x + coords.y;
+                    feedbackElement.innerHTML = `<p class="font-bold">RENDEZVOUS POINT VALIDATED: (${coords.x}, ${coords.y})</p><p>Intel gathered: Variable <span class="font-bold text-indigo-400">F = ${intel.F}</span> (sum of coordinates).</p>`;
+                    isCorrect = true;
+                }
+            }
+
+            // --- UI Feedback ---
+            if (isCorrect) {
+                feedbackElement.classList.remove('hidden');
+                inputElement.classList.add('border-green-500');
+                inputElement.disabled = true;
+                solvedPuzzles.add(puzzleNumber);
+                
+                const nextPuzzle = document.getElementById(`puzzle-${puzzleNumber + 1}`);
+                if (nextPuzzle) {
+                    nextPuzzle.classList.add('active');
+                } else {
+                    document.getElementById('final-challenge').classList.add('active');
+                }
+            } else {
+                inputElement.classList.add('border-red-500');
+                setTimeout(() => inputElement.classList.remove('border-red-500'), 1500);
+            }
+        }
+
+        document.getElementById('submit-code').addEventListener('click', () => {
+            const finalFeedback = document.getElementById('final-feedback');
+            const input = document.getElementById('code-input');
+            
+            // Check if all intel is gathered
+            if (Object.keys(intel).length < 6) {
+                finalFeedback.textContent = 'Mission data incomplete. Solve all puzzles first.';
+                finalFeedback.classList.add('text-red-500', 'font-semibold');
+                return;
+            }
+
+            // The absolute value of D is used for the launch code.
+            const correctCode = `${intel.B}${intel.C}${Math.abs(intel.D)}${intel.E}${intel.F}`;
+
+            if (input.value === correctCode) {
+                finalFeedback.textContent = '';
+                document.getElementById('final-code-display').innerHTML = `Code: <span class="font-mono bg-gray-200 px-2 py-1 rounded">${correctCode}</span>`;
+                document.getElementById('success-modal').classList.remove('hidden');
+                setTimeout(() => document.querySelector('#success-modal > div').classList.add('scale-100'), 10);
+            } else {
+                finalFeedback.textContent = 'Launch sequence incorrect. Recalculate and try again.';
+                finalFeedback.classList.add('text-red-500', 'font-semibold');
+                input.classList.add('border-red-500', 'animate-shake');
+                setTimeout(() => {
+                    input.classList.remove('border-red-500', 'animate-shake');
+                }, 500);
+            }
+        });
+
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes shake { 10%, 90% { transform: translateX(-1px); } 20%, 80% { transform: translateX(2px); } 30%, 50%, 70% { transform: translateX(-4px); } 40%, 60% { transform: translateX(4px); } }
+            .animate-shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
+
+
